@@ -1,15 +1,21 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { DELETE_CHARACTER } from "../redux/types";
 
 class Delete extends Component {
   render() {
-    const { onDelete, id } = this.props;
+    const { id, dispatch } = this.props;
 
     return (
       <div>
-        <button onClick={() => onDelete(id)}>Delete</button>
+        <button
+          onClick={() => dispatch({ type: DELETE_CHARACTER, payload: id })}
+        >
+          Delete
+        </button>
       </div>
     );
   }
 }
 
-export default Delete;
+export default connect()(Delete);

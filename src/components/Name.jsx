@@ -1,13 +1,19 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { TOGGLE_LIKED } from "../redux/types";
 
 class Name extends Component {
   render() {
-    const { liked, character, onLikeToggle, id } = this.props;
+    const { liked, character, id, dispatch } = this.props;
 
     return (
       <div>
         <h1>{character}</h1>
-        <button onClick={() => onLikeToggle(id)}>
+        <button
+          onClick={() => {
+            dispatch({ type: TOGGLE_LIKED, payload: id });
+          }}
+        >
           {liked ? "Liked" : "Not liked"}
         </button>
       </div>
@@ -15,4 +21,4 @@ class Name extends Component {
   }
 }
 
-export default Name;
+export default connect()(Name);

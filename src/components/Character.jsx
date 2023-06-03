@@ -8,19 +8,13 @@ class Character extends Component {
   render() {
     const { character, quote, image, id, characterDirection, liked } =
       this.props.item;
-    const { onLikeToggle, onDelete } = this.props;
 
     return (
       <div className="characterContainer">
-        <Name
-          character={character}
-          onLikeToggle={onLikeToggle}
-          id={id}
-          liked={liked}
-        />
+        <Name character={character} id={id} liked={liked} />
         <Quote quote={quote} />
         <Image image={image} />
-        <Delete onDelete={onDelete} id={id} />
+        <Delete id={id} />
       </div>
     );
   }
